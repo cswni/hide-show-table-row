@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mostrar/ ocultar filas de tablas</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container pt-4">
+      <div class="alert alert-success">Mostrar y ocultar filas de tablas</div>
+      <form action="" class="">
+        <div class="form-group">
+          <label for="estado">Selecciona el estado</label>
+          <select name="" id="estado" class="form-control input-lg">
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+          </select>
+        </div>
+      </form>
+
+      <table class="table table-striped" id="tiendas">
+          <thead>
+              <tr>
+                  <th>No</th>
+                  <th>Tienda</th>
+                  <th>Direccion</th>
+                  <th>Estado</th>
+              </tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>Activo</td>   
+              </tr>
+
+              <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="bg-danger">Inactivo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="bg-danger">Inactivo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="bg-danger">Inactivo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="bg-danger">Inactivo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="bg-danger">Inactivo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="bg-danger">Inactivo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="bg-danger">Inactivo</td>   
+            </tr><tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Activo</td>   
+            </tr>
+           
+
+          </tbody>
+      </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(function (){
+            //Select
+            let estados = $("#estado");
+
+            estados.change(function (){
+                //Tabla
+                let table = $("#tiendas")
+                // Cada fila de la tabla
+                let filas = table.find("tr");
+
+                //Recorrer las filas
+                for(fila of filas){
+                    // COnvertir cada tabla a un objeto jQuery
+                    fila = $(fila);
+
+                    // Validar si el contenido de la celda 4 (Estado) es igual al valor del select
+                    if(fila.find("td:eq(3)").text() === estados.val()){
+                        // Si es asi; la mostramos o la ocultamos
+                        fila.show();
+                    }else{
+                        fila.hide()
+                    }
+                };
+            })
+            
+        })
+    </script>
+  </body>
+</html>
