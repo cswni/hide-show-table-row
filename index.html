@@ -187,8 +187,8 @@
             estados.change(function (){
                 //Tabla
                 let table = $("#tiendas")
-                // Cada fila de la tabla
-                let filas = table.find("tr");
+                // Cada fila de la tabla, omitiendo el encabezado
+                let filas = table.find("tr:gt(0)");
 
                 // Si el valor es "Cualuier estado"
                 if(estados.val() == "0"){
