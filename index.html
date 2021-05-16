@@ -19,6 +19,7 @@
           <select name="" id="estado" class="form-control input-lg">
             <option value="Activo">Activo</option>
             <option value="Inactivo">Inactivo</option>
+            <option value="0">Cualquier estado</option>
           </select>
         </div>
       </form>
@@ -189,19 +190,30 @@
                 // Cada fila de la tabla
                 let filas = table.find("tr");
 
-                //Recorrer las filas
-                for(fila of filas){
-                    // COnvertir cada tabla a un objeto jQuery
-                    fila = $(fila);
-
-                    // Validar si el contenido de la celda 4 (Estado) es igual al valor del select
-                    if(fila.find("td:eq(3)").text() === estados.val()){
-                        // Si es asi; la mostramos o la ocultamos
+                // Si el valor es "Cualuier estado"
+                if(estados.val() == "0"){
+                    // Recorrer las filas y mostrarlas
+                    $.each(filas, (i,fila) => {
+                        fila = $(fila);
                         fila.show();
-                    }else{
-                        fila.hide()
-                    }
-                };
+                    })
+                    //Si no es "Cualquier estado"
+                }else{
+                    //Recorrer las filas
+                    for(fila of filas){
+                        // COnvertir cada tabla a un objeto jQuery
+                        fila = $(fila);
+                        // Validar si el contenido de la celda 4 (Estado) es igual al valor del select
+                        if(fila.find("td:eq(3)").text() === estados.val()){
+                            // Si es asi; la mostramos o la ocultamos
+                            fila.show(100);
+                        }else{
+                            fila.hide(100)
+                        }
+                        
+                    };
+                }
+                
             })
             
         })
